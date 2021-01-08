@@ -1,7 +1,6 @@
 # Circuito-sensor-de-agua
 Circuito com sensor de água e notificação via e-mail no thingspeak
 
-
         String ssid     = "Simulator Wifi";  // SSID para conectar em um WiFi, neste caso, uma rede "Simulada"
         String password = ""; // Este WiFi não possuí senha
 
@@ -71,14 +70,14 @@ Circuito com sensor de água e notificação via e-mail no thingspeak
           String saida = "";
 
           if (Serial.find("\r\n\r\n")){	
-              delay(5);
+                delay(5);
 
-              unsigned int i = 0; 
+                unsigned int i = 0; 
 
-              if (!Serial.find("\"field1\":")){}
+                if (!Serial.find("\"field1\":")){}
 
 
-              while (i<60000) { 
+                        while (i<60000) { 
                     if(Serial.available()) {
                           int c = Serial.read(); 
                           if (c == '.') 
@@ -87,7 +86,7 @@ Circuito com sensor de água e notificação via e-mail no thingspeak
                             saida += (char)c; 
 
                     }
-                  i++;
+                        i++;
                 }
             }
             return saida.toFloat();
@@ -129,9 +128,9 @@ Circuito com sensor de água e notificação via e-mail no thingspeak
 
         void acenderLedEmergencia(float pote){
           if(pote >= 100.0){
-            digitalWrite(GPIO_LED, HIGH);
+                digitalWrite(GPIO_LED, HIGH);
           }else{
-            digitalWrite(GPIO_LED, LOW);
+                digitalWrite(GPIO_LED, LOW);
           }
         }
 
@@ -167,7 +166,7 @@ Circuito com sensor de água e notificação via e-mail no thingspeak
             analogWrite(B, 0);
           }  
         void yellow(){
-            analogWrite(R, 255);
+                analogWrite(R, 255);
             analogWrite(G, 255);
             analogWrite(B, 0);
           }  
@@ -188,13 +187,13 @@ Circuito com sensor de água e notificação via e-mail no thingspeak
 
         void loop() {
           if(cm >0 && cm<=100){// acende verde
-          green();
+                green();
           }
           else if (cm >100 && cm<=200) { // acende amarelo
-          yellow();
+                yellow();
           }
           else if (cm>200) { // acende vermelho
-          red();
+                red();
           }
           else {
             apaga();
